@@ -1,11 +1,9 @@
-package in.tuxdna
+package in.tuxdna.services
 
-import akka.actor._
+import akka.actor.{Actor, ActorSelection, _}
 import com.typesafe.config.ConfigFactory
-
-import akka.actor.{ActorSelection, Actor, ActorRef}
 import in.tuxdna.db.Database
-import in.tuxdna.entities.{StopEvent, StartEvent}
+import in.tuxdna.entities.{StartEvent, StopEvent}
 
 import scala.util.Random
 
