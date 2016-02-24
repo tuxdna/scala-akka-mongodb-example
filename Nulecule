@@ -1,0 +1,21 @@
+---
+specversion: 0.0.2
+id: scala-akka-mongodb-atomicapp
+
+metadata:
+  name: Scala Akka MongoDB Example
+  appversion: 1.0.0
+  description: Simple Scala-Akka-MongoDB Atomic App. Uses remote MongoDB AtomicApp
+graph:
+  - name: mongodb-atomicapp
+    source: docker://projectatomic/mongodb-atomicapp
+    artifacts:
+      # kubernetes:
+      #   - file://artifacts/kubernetes/app-pod.yaml
+      #   - file://artifacts/kubernetes/app-service.yaml
+      # openshift:
+      #   - file://artifacts/openshift/volume.yaml
+      #   - file://artifacts/openshift/service.yaml
+      #   - file://artifacts/openshift/pod.yaml
+      docker:
+        - file://artifacts/docker/wordpress-run

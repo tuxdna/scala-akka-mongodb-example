@@ -1,0 +1,1 @@
+docker run -d --name scala-akka-mongodb-atomicapp -p $port:80 --link mongodb-atomicapp-app:mysql scala-akka-mongodb-atomicapp

@@ -8,7 +8,7 @@ How to run?
 
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  Main
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  Main
 http://localhost:8080/hello
 ```
 
@@ -27,7 +27,7 @@ With default settings, on a single machine following URLs ( services ) should wo
 NewsAPI
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsAPI
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsAPI
 wget http://localhost:8080/getAllNews
 ```
 
@@ -36,7 +36,7 @@ StockAPI
 
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.StockAPI
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.StockAPI
 wget http://localhost:8081/ticker/GOOG
 ```
 
@@ -45,7 +45,7 @@ GeoIpAPI
 
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.GeoIpAPI
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.GeoIpAPI
 wget http://localhost:8082/ip/8.8.8.8
 ```
 
@@ -56,14 +56,14 @@ Firrst, start the Reciever
 
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsReceiverService
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsReceiverService
 ```
 
 Now start the Publisher
 
 
 ```
-java -cp target/scala-akka-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsPublisherService
+java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsPublisherService
 ```
 
 This will establish Actors communicating over TCP, which we can distribute on different hosts.
