@@ -4,12 +4,10 @@ import akka.actor._
 import com.typesafe.config.ConfigFactory
 
 import akka.actor.{ActorSelection, Actor, ActorRef}
+import in.tuxdna.db.Database
+import in.tuxdna.entities.{StopEvent, StartEvent}
 
 import scala.util.Random
-
-case object Start
-
-case object Stop
 
 class NewsPublisherActor(receiver: ActorSelection) extends Actor {
   val newsItems = List(
@@ -19,7 +17,7 @@ class NewsPublisherActor(receiver: ActorSelection) extends Actor {
   )
 
   def receive = {
-    case Start =>
+    case StartEvent =>
       println("Start generating news items")
       for (i <- 0 until 20) {
         val item = newsItems(Random.nextInt(newsItems.size))
@@ -27,9 +25,9 @@ class NewsPublisherActor(receiver: ActorSelection) extends Actor {
         receiver ! item
       }
 
-    case Stop =>
+    case StopEvent =>
       println("Stop generating news items")
-      receiver ! Stop
+      receiver ! StopEvent
   }
 }
 
@@ -42,9 +40,9 @@ object NewsPublisherService extends App {
   val publisher = actorSystem.actorOf(Props(new NewsPublisherActor(receiverSelection)))
 
 
-  publisher ! Start
+  publisher ! StartEvent
   Thread.sleep(1000)
-  publisher ! Stop
+  publisher ! StopEvent
 
   Thread.sleep(1000)
   actorSystem.shutdown()
@@ -54,7 +52,8 @@ class NewsReceiver extends Actor {
   def receive = {
     case news: String =>
       println(s"Received Item: ${news}")
-    case Stop =>
+      Database.saveNewsItem(news)
+    case StopEvent =>
       println("Shutdown my actor system")
       context.system.shutdown()
   }

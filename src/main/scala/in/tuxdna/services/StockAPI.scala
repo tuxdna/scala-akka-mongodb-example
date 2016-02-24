@@ -1,9 +1,8 @@
-package in.tuxdna.server1
+package in.tuxdna.services
 
 import akka.actor.ActorSystem
 import akka.event.Logging
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
@@ -11,7 +10,7 @@ import com.typesafe.config.ConfigFactory
 import in.tuxdna.db.Database
 
 
-object Service1 extends App {
+object StockAPI extends App {
 
   implicit val system = ActorSystem("Streams")
   implicit val executor = system.dispatcher
@@ -20,7 +19,7 @@ object Service1 extends App {
   val logger = Logging(system, getClass)
 
   val routes = {
-    logRequestResult("service1") {
+    logRequestResult("StockAPI") {
       pathPrefix("getAllTickers") {
         get {
           complete {
@@ -49,5 +48,5 @@ object Service1 extends App {
     }
   }
 
-  Http().bindAndHandle(routes, config.getString("http.interface"), config.getInt("http.port1"))
+  Http().bindAndHandle(routes, config.getString("stockAPI.http.interface"), config.getInt("stockAPI.http.port"))
 }
