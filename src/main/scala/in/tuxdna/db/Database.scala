@@ -34,8 +34,9 @@ object Database {
     q.put("Ticker", ticker)
     val cursor = Database.collection.find(q)
     if (cursor.hasNext) {
-      Some(cursor.next)
+      val e = cursor.next
       cursor.close()
+      Some(e)
     } else {
       None
     }

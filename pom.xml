@@ -48,6 +48,11 @@
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-remote_${scalaBinaryVersion}</artifactId>
+            <version>${akkaVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-cluster_${scalaBinaryVersion}</artifactId>
             <version>${akkaVersion}</version>
         </dependency>

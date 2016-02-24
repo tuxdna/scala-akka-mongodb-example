@@ -31,30 +31,21 @@ object Service1 extends App {
             }
           }
         }
-      }
-      pathPrefix("ticker") {
-        (get & path(Segment)) { ticker =>
-          complete {
-            // if we find the query parameter
-            case Some(ticker) => {
-
+      } ~
+        pathPrefix("ticker") {
+          (get & path(Segment)) { id =>
+            complete {
               // query the database
-              val ticker = Database.findTicker(ticker)
-
-              // use a simple for comprehension, to make
-              // working with futures easier.
-              for {
-                t <- ticker
-              } yield {
+              val tickerOption = Database.findTicker(id)
+              for (t <- tickerOption) yield {
                 t match {
-                  case Some(t) => t.toString
-                  case None => HttpResponse(status = OK)
+                  case Some(t) => OK -> t.toString
+                  case None => NotFound -> "No such ticker"
                 }
               }
             }
           }
         }
-      }
     }
   }
 
