@@ -24,7 +24,7 @@ Extra / External dependecies:
 With default settings, on a single machine following URLs ( services ) should work.
 
 
-NewsAPI
+**NewsAPI**
 
 ```
 java -cp target/scala-akka-mongodb-example-0.0.1-SNAPSHOT-allinone.jar  in.tuxdna.services.NewsAPI
@@ -32,7 +32,7 @@ wget http://localhost:8080/getAllNews
 ```
 
 
-StockAPI
+**StockAPI**
 
 
 ```
@@ -41,7 +41,7 @@ wget http://localhost:8081/ticker/GOOG
 ```
 
 
-GeoIpAPI
+**GeoIpAPI**
 
 
 ```
@@ -50,7 +50,7 @@ wget http://localhost:8082/ip/8.8.8.8
 ```
 
 
-News Publisher / Subscriber
+**News Publisher / Subscriber**
 
 Firrst, start the Reciever
 
@@ -70,7 +70,7 @@ This will establish Actors communicating over TCP, which we can distribute on di
 
 
 
-TBD: Convert into an AtomicApp ( using Nulecule spec )
+**TODO**: Convert into an AtomicApp ( using Nulecule spec ).
 
 
 
