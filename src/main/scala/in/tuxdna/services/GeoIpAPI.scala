@@ -40,7 +40,8 @@ object GeoIpAPI extends App with Protocols {
         case _ => Unmarshal(response.entity).to[String].flatMap { entity =>
           val error = s"FreeGeoIP request failed with status code ${response.status} and entity $entity"
           logger.error(error)
-          Future.failed(new IOException(error))
+          // Future.failed(new IOException(error))
+          Future.successful(Left(error))
         }
       }
     }
