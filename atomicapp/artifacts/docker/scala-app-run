@@ -1,0 +1,2 @@
+docker run -d --name scala-akka-atomicapp -p $http_port:8000 --link mongodb-atomicapp:mongodb -e DB_CONNECTION=$db_conn -e DB_HOST=$db_host -e DB_DATABASE=$db_name -e DB_USERNAME=$db_user -e DB_PASSWORD=$db_pass $image
+

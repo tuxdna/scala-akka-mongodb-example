@@ -1,0 +1,31 @@
+---
+specversion: 0.0.2
+id: scala-akka-mongodb-atomicapp
+
+metadata:
+  name: Scala Akka MongoDB AtomicApp
+  appversion: 2.0.0
+  description: Complex Scala App uses remote MongoDB Atomic App
+graph:
+  - name: mongodb-atomicapp
+    source: docker://projectatomic/mongodb-atomicapp
+  - name: scala-akka-app
+    params:
+      - name: image
+        default: scala-akka-app
+      - name: db_host
+        description: database host
+        default: mongodb
+      - name: http_port
+        description: database host
+        default: mongodb
+    artifacts:
+      docker:
+        - file://artifacts/docker/koel-run
+      # kubernetes:
+      #   - file://artifacts/kubernetes/wordpress-pod.yaml
+      #   - file://artifacts/kubernetes/wordpress-service.yaml
+      # openshift:
+      #   - file://artifacts/openshift/volume.yaml
+      #   - file://artifacts/openshift/service.yaml
+      #   - file://artifacts/openshift/pod.yaml
